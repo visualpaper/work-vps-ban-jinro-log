@@ -108,6 +108,23 @@ test = "pytest tests -s -vv --cov"
 
 ### VSCode
 
+#### extensions
+
+以下、VSCode 拡張をインストールする。
+
+```
+    "recommendations": [
+        // https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
+        "ms-python.vscode-pylance",
+        // https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter
+        "ms-python.black-formatter",
+        // https://marketplace.visualstudio.com/items?itemName=ms-python.flake8
+        "ms-python.flake8",
+    ]
+```
+
+<br>
+
 #### defaultInterpreterPath
 
 CTRL + SHIFT + P で「Python Select Interpreter」を選択し Poetry にて作成された venv の場所を指定すること。  
@@ -121,14 +138,18 @@ CTRL + SHIFT + P で「Python Select Interpreter」を選択し Poetry にて作
   ※ PEP8 準拠していない場合など自動修正してくれるようになる。
 
 ```
-  // formatter
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": [
-    // skip-string-normalization で ' を " に変えることを抑制している。
-    // # ※ PEP8 では規定されていないが好みだと思うので抑制している。
-    "skip-string-normalization"
-  ],
-  "editor.formatOnSave": true,
+    // formatter
+    // 以下に沿って、VSCode 拡張をインストールする。
+    // https://github.com/microsoft/vscode-python/wiki/Migration-to-Python-Tools-Extensions
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+    },
+    "black-formatter.args": [
+        // skip-string-normalization で ' を " に変えることを抑制している。
+        // # ※ PEP8 では規定されていないが好みだと思うので抑制している。
+        "skip-string-normalization"
+    ],
 ```
 
 <br>
@@ -138,23 +159,33 @@ CTRL + SHIFT + P で「Python Select Interpreter」を選択し Poetry にて作
 - flake8
 
 ```
-  // linter
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": [
-    // black の定義 88 に合わせています。
-    // (参照) https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#line-length
-    "--max-line-length=88",
-    // W503 と E203 は black の定義と合わせています。
-    // (参照) https://rcmdnk.com/blog/2019/11/04/computer-python/
-    //        https://org-technology.com/posts/python-black.html
-    "--ignore=E203,W503"
-  ],
-  // Pylance 拡張機能での型チェックを行うようにする。
-  "python.analysis.typeCheckingMode": "basic"
+    // linter
+    // 以下に沿って、VSCode 拡張をインストールする。
+    // https://github.com/microsoft/vscode-python/wiki/Migration-to-Python-Tools-Extensions
+    "flake8.args": [
+        // black の定義 88 に合わせています。
+        // (参照) https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#line-length
+        "--max-line-length=88",
+        // W503 と E203 は black の定義と合わせています。
+        // (参照) https://rcmdnk.com/blog/2019/11/04/computer-python/
+        //        https://org-technology.com/posts/python-black.html
+        "--ignore=E203,W503"
+    ],
 ```
 
 ※ PEP8 準拠していない場合など警告が出るようになる。
+
+<br>
+
+#### type hints
+
+- Pylance  
+  ※ 入力補完、自動インポートなど。  
+
+```
+    // Pylance 拡張機能での型チェックを行うようにする。
+    "python.analysis.typeCheckingMode": "basic"
+```
 
 <br><br>
 
