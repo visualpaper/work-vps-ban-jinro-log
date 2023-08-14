@@ -189,10 +189,60 @@ CTRL + SHIFT + P で「Python Select Interpreter」を選択し Poetry にて作
 
 <br><br>
 
+### Library
+
+#### pydantic
+
+- poetry add pydantic  
+  ※ 型ヒントを元に Validation を行うために必要  
+  ※ Pylance は静的解析レベルで、pydantic は型を元に Validation エラーまで出してくれる。    
+
+- poetry add pydantic-settings  
+  ※ Env から設定を読み込む際に利用している。  
+  ※ 元々 pydantic V1 では不要だったが V2 から別途必要になったので入れている。
+
+<br>
+
+#### Env
+
+- poetry add python-dotenv  
+  ※ 開発時には .env ファイルを利用する。  
+  ※ テスト時には Setting を override する。  
+  ※ デプロイ時には環境変数を指定して override する。  
+  ※ gitignore より `.env` を対象にするよう変更すること。
+
+```
+# Environments
+#.env ← をコメントアウトし commit 対象とすること。
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+```
+
+<br><br>
+
+### FastAPI
+
+#### initialize
+
+- poetry add fastapi uvicorn  
+  ※ uvicorn は Local で動かすために必要なサーバで、本体は fastapi のみ。
+
+<br>
+
+#### Graphql
+
+- poetry add strawberry-graphql  
+  ※ 実態は https://strawberry.rocks/
+
+<br><br>
+
 ## Build
 
 - poetry install
-- poetry run task codegen
 - poetry run task format
 - poetry run task lint
 - poetry run task test
