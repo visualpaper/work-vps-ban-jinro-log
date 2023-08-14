@@ -238,21 +238,11 @@ venv.bak/
 - poetry add strawberry-graphql  
   ※ 実態は https://strawberry.rocks/
 
-<br>
-
-#### Rate Limit
-
-- poetry add slowapi  
-  ※ Alpha 版だが、非常に使いやすいので採用している。  
-  ※ limit デコレータはデコレータする関数の直上に記載しなければいけない点に注意すること。  
-  (参照) https://slowapi.readthedocs.io/en/latest/
-
 <br><br>
 
 ## Build
 
 - poetry install
-- poetry run task codegen
 - poetry run task format
 - poetry run task lint
 - poetry run task test
