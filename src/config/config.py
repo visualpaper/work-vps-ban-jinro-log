@@ -3,7 +3,8 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    context_path: str = ""
+    graphql_endpoint: str = ""
+    enable_graphiql: bool = False
     logging_path: str = ""
     cookie_name: str = ""
     cookie_max_age_seconds: int = 0

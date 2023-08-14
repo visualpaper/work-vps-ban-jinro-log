@@ -233,6 +233,13 @@ venv.bak/
 
 <br>
 
+#### Graphql
+
+- poetry add strawberry-graphql  
+  ※ 実態は https://strawberry.rocks/
+
+<br>
+
 #### Rate Limit
 
 - poetry add slowapi  

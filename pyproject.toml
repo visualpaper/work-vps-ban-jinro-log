@@ -11,6 +11,7 @@ uvicorn = "^0.23.2"
 python-dotenv = "^1.0.0"
 slowapi = "^0.1.8"
 pydantic-settings = "^2.0.3"
+strawberry-graphql = "^0.203.3"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
