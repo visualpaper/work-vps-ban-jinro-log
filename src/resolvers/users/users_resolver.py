@@ -5,7 +5,7 @@ from src.config.config import Settings
 from src.types.types import User
 
 
-def initialize(self, info: Info) -> User:
+async def initialize(self, info: Info) -> User:
     sid: str = info.context["sid"]
     config: Settings = info.context["config"]
 
