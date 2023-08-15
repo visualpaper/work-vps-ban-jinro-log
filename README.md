@@ -266,6 +266,26 @@ venv.bak/
 
 <br><br>
 
+### MongoDB
+
+- poetry add motor
+
+```
+MongoDB Atlas (https://www.mongodb.com/atlas/database) 無料枠を利用
+
+Provider: AWS
+Region: Tokyo (ap-northeast-1)
+DB Cluster: ban-jinro-log-cluster
+DB: ban-jinro-log-db
+Collection
+  - tm_user
+    - Index:
+      - fields: { "createDate": 1 }
+      - option: { expireAfterSeconds: 3600 }
+```
+
+<br><br>
+
 ## Build
 
 - poetry install

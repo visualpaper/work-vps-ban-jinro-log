@@ -11,6 +11,7 @@ uvicorn = "^0.23.2"
 python-dotenv = "^1.0.0"
 pydantic-settings = "^2.0.3"
 strawberry-graphql = "^0.203.3"
+motor = "^3.2.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
@@ -37,7 +38,7 @@ line_length = 88
 max-line-length = 88
 
 [tool.autoflake]
-imports = ["fastapi"]
+imports = ["fastapi", "motor"]
 
 [tool.pytest.ini_options]
 # tests が src と同階層にいる場合、tests から src を参照するために必要
