@@ -31,7 +31,26 @@ authors = ["visualpaper"]
 #### Formatter
 
 - poetry add --group dev black  
-  ※ コマンドは Task Runner 欄に記載する。
+  ※ コマンドは Task Runner 欄に記載する。  
+
+- poetry add --group dev isort  
+  ※ import の順番整合を整えてくれるもの。  
+
+- poetry add --group dev autoflake  
+  ※ 未使用な import を削除するためだけに利用している。  
+  ※ デフォルトでは python 標準ライブラリのみが対象のため、必要に応じて imports を追加する必要がある。
+
+```
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.autoflake]
+imports = ["fastapi"]
+```
 
 <br>
 
@@ -45,6 +64,9 @@ authors = ["visualpaper"]
 ```
 [tool.poetry.dependencies]
 python = ">=3.8.1"
+
+[tool.flake8]
+max-line-length = 88
 ```
 
 <br>
@@ -88,7 +110,11 @@ python = ">=3.8.1,<4.0"
 [tool.taskipy.tasks]
 # skip-string-normalization で ' を " に変えることを抑制しています。
 # ※ PEP8 では規定されていないが好みだと思うので抑制しています。
-format = "black src tests --skip-string-normalization"
+format = """\
+         autoflake -r src tests --remove-all-unused-imports --in-place\
+         && isort src tests\
+         && black src tests --skip-string-normalization
+         """
 
 # max-line-length で black の定義 88 に合わせています。
 # (参照) https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#line-length

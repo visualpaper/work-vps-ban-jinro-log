@@ -19,10 +19,25 @@ pytest = "^7.4.0"
 pytest-mock = "^3.11.1"
 pytest-cov = "^4.1.0"
 taskipy = "^1.12.0"
+isort = "^5.12.0"
+autoflake = "^2.2.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.flake8]
+max-line-length = 88
+
+[tool.autoflake]
+imports = ["fastapi"]
 
 [tool.pytest.ini_options]
 # tests が src と同階層にいる場合、tests から src を参照するために必要
@@ -40,7 +55,11 @@ skip_empty = true
 [tool.taskipy.tasks]
 # skip-string-normalization で ' を " に変えることを抑制しています。
 # ※ PEP8 では規定されていないが好みだと思うので抑制しています。
-format = "black src tests --skip-string-normalization"
+format = """\
+         autoflake -r src tests --remove-all-unused-imports --in-place\
+         && isort src tests\
+         && black src tests --skip-string-normalization
+         """
 
 # max-line-length で black の定義 88 に合わせています。
 # (参照) https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#line-length

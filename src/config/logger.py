@@ -1,10 +1,8 @@
-import os
 import logging
-
+import os
 from logging.handlers import RotatingFileHandler
 
 from .config import get_config
-
 
 config = get_config()
 logger = logging.getLogger(__name__)

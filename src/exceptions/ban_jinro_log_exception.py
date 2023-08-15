@@ -1,6 +1,7 @@
 from typing import Optional
 
 from graphql import GraphQLError
+
 from src.logcode import LogCode
 
 
