@@ -16,6 +16,12 @@ config = get_config()
 logger = get_logger()
 
 
+# 現状 Inject 方法がこの context_getter を利用する方法しかなさそう。
+# 他ライブラリも見たがなんとなく似たような状況っぽい。
+#
+# で、この strawberry が絶賛 Inject 対応中っぽいので、
+# 将来を期待し今は context_getter で各 facade を injection している。
+# (参照) https://github.com/strawberry-graphql/strawberry/issues/2413
 schema = strawberry.Schema(query=Query, mutation=Mutation)
 graphql_app = MyGraphQLRouter(
     schema, graphiql=config.enable_graphiql, context_getter=get_context

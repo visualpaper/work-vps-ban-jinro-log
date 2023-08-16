@@ -268,7 +268,8 @@ venv.bak/
 
 ### MongoDB
 
-- poetry add motor
+- poetry add pymongo  
+  (参照) https://pymongo.readthedocs.io/en/stable/index.html
 
 ```
 MongoDB Atlas (https://www.mongodb.com/atlas/database) 無料枠を利用

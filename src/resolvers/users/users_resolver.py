@@ -1,13 +1,17 @@
+
 import strawberry
 from strawberry.types import Info
+from src.config.mongodb import get_database
 
 from src.config.config import Settings
 from src.types.types import User
 
 
-async def initialize(self, info: Info) -> User:
+def initialize(self, info: Info) -> User:
     sid: str = info.context["sid"]
     config: Settings = info.context["config"]
+    # db = get_database()
+    # print(db["tm_user"].count_documents({}))
 
     if sid is not None:
         # mongodb から取得

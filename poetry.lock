@@ -218,26 +218,6 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
-name = "motor"
-version = "3.2.0"
-description = "Non-blocking MongoDB driver for Tornado or asyncio"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-pymongo = ">=4.4,<5"
-
-[package.extras]
-aws = ["pymongo[aws] (>=4.4,<5)"]
-encryption = ["pymongo[encryption] (>=4.4,<5)"]
-gssapi = ["pymongo[gssapi] (>=4.4,<5)"]
-ocsp = ["pymongo[ocsp] (>=4.4,<5)"]
-snappy = ["pymongo[snappy] (>=4.4,<5)"]
-srv = ["pymongo[srv] (>=4.4,<5)"]
-zstd = ["pymongo[zstd] (>=4.4,<5)"]
-
-[[package]]
 name = "mslex"
 version = "0.3.0"
 description = "shlex for windows"
@@ -570,7 +550,7 @@ test = ["pytest (>=6.0.0)", "setuptools (>=65)"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "0592cf1d6f41e8e95e7a76d5695dce6aa24e58788819d209440c6de53d865f70"
+content-hash = "08b7bc55678de5e3a18f1f6bca0f9c4777c4cacddb7de96496f34c2c4f37be5f"
 
 [metadata.files]
 annotated-types = [
@@ -714,10 +694,6 @@ isort = [
 mccabe = [
     {file = "mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},
     {file = "mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"},
-]
-motor = [
-    {file = "motor-3.2.0-py3-none-any.whl", hash = "sha256:82cd3d8a3b57e322c3fa382a393b52828c9a2e98b315c78af36f01bae78af6a6"},
-    {file = "motor-3.2.0.tar.gz", hash = "sha256:4fb1e8502260f853554f24115421584e83904a6debb577354d33e9711ee99008"},
 ]
 mslex = [
     {file = "mslex-0.3.0-py2.py3-none-any.whl", hash = "sha256:380cb14abf8fabf40e56df5c8b21a6d533dc5cbdcfe42406bbf08dda8f42e42a"},
