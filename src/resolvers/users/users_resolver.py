@@ -19,7 +19,7 @@ def initialize(info: Info) -> UserSchema:
         user: Optional[User] = facade.get_user(sid)
         if user is not None:
             return UserSchema(
-                id=strawberry.ID(user.id), villageNumbers=user.villageNumbers
+                id=strawberry.ID(user.id), villageNumbers=user.village_numbers
             )
 
     # 存在していない場合は 1 時間有効期限で作成し Cookie 上に Session を持たせる。
@@ -38,5 +38,5 @@ def initialize(info: Info) -> UserSchema:
         max_age=config.cookie_max_age_seconds,
     )
     return UserSchema(
-        id=strawberry.ID(created_user.id), villageNumbers=created_user.villageNumbers
+        id=strawberry.ID(created_user.id), villageNumbers=created_user.village_numbers
     )
