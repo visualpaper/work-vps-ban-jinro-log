@@ -1,7 +1,7 @@
 from pymongo import MongoClient
+from pymongo.database import Database
 
 from src.config.config import Settings
-from pymongo.database import Database
 
 
 class DataBase:

@@ -259,6 +259,23 @@ venv.bak/
 
 <br>
 
+#### Injector
+
+FastAPI の `Depends` 機構のみを利用している。  
+が、この状態では具象クラスに依存があるような形となってしまう。  
+
+```
+例:
+
+def __init__(self, repository: UserRepository = Depends(UserRepositoryImpl)):
+    self._repository = repository
+```
+
+かなり微妙なのだが、Injector を入れるかどうかは悩ましく、  
+将来的な機能拡張に期待しつつ、今は上記のような形でなんちゃって DI を行っている。
+
+<br>
+
 #### Graphql
 
 - poetry add strawberry-graphql  
