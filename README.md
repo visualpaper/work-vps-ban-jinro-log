@@ -225,6 +225,13 @@ CTRL + SHIFT + P で「Python Select Interpreter」を選択し Poetry にて作
 
 ### Library
 
+#### date
+
+- poetry add tzdata  
+  ※ python 3.9 から利用できる zoneinfo にて、Asia/Tokyo などのタイムゾーンを利用する場合に必要になる。
+
+<br>
+
 #### pydantic
 
 - poetry add pydantic  

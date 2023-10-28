@@ -18,3 +18,8 @@ class BanJinroLogException(GraphQLError):
     @property
     def log_code(self) -> LogCode:
         return self._log_code
+
+
+class IllegalArgumentsException(BanJinroLogException):
+    def __init__(self, message: Optional[str] = None):
+        super().__init__(LogCode.ILLEGAL_ARGUMENTS, message)
