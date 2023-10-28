@@ -1,6 +1,6 @@
 from enum import Enum
 
-from src.exceptions.ban_jinro_log_exception import IllegalArgumentsException
+from exceptions.exceptions import IllegalArgumentsException
 
 
 class VillageCast(Enum):

@@ -1,4 +1,4 @@
-from src.exceptions.ban_jinro_log_exception import BanJinroLogException
+from exceptions.exceptions import BanJinroLogException
 from src.logcode import LogCode
 
 

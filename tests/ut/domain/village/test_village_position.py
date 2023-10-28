@@ -1,7 +1,7 @@
 import pytest
 
+from exceptions.exceptions import IllegalArgumentsException
 from src.domain.village.village_position import VillagePosition
-from src.exceptions.ban_jinro_log_exception import IllegalArgumentsException
 
 
 class TestVillagePosition:
