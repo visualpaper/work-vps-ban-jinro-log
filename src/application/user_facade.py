@@ -2,9 +2,9 @@ from typing import Optional
 
 from fastapi import Depends
 
-from src.domain.user import User
-from src.domain.user_repository import UserRepository
-from src.infrastructure.repository.user_repository import UserRepositoryImpl
+from src.domain.user.user import User
+from src.domain.user.user_repository import UserRepository
+from src.infrastructure.repository.user.user_repository import UserRepositoryImpl
 
 
 class UserFacade:

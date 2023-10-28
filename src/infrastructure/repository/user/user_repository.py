@@ -4,10 +4,10 @@ from typing import Optional
 from bson import ObjectId
 from fastapi import Depends
 
-from src.domain.user import User
-from src.domain.user_repository import UserRepository
-from src.infrastructure.mongodb.user_dao import UserDao
-from src.infrastructure.mongodb.user_dto import UserDto
+from src.domain.user.user import User
+from src.domain.user.user_repository import UserRepository
+from src.infrastructure.mongodb.user.user_dao import UserDao
+from src.infrastructure.mongodb.user.user_dto import UserDto
 
 
 class UserRepositoryImpl(UserRepository):

@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .config.config import get_config
 from .config.logger import get_logger
 from .config.mongodb import close_mongo_connection, connect_to_mongo
-from .exceptions.ban_jinro_log_exception_handler import MyGraphQLRouter
+from .exceptions.exception_handler import MyGraphQLRouter
 from .resolvers.context_getter import get_context
 from .types.mutation import Mutation
 from .types.query import Query
