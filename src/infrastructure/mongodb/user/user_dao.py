@@ -6,7 +6,7 @@ from pymongo.collection import Collection
 from pymongo.database import Database
 
 from src.config.mongodb import get_database
-from src.infrastructure.mongodb.user_dto import UserDto
+from src.infrastructure.mongodb.user.user_dto import UserDto
 
 
 class UserDao:

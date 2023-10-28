@@ -5,7 +5,7 @@ from strawberry.types import Info
 
 from src.application.user_facade import UserFacade
 from src.config.config import Settings
-from src.domain.user import User
+from src.domain.user.user import User
 from src.types.types import UserSchema
 
 
