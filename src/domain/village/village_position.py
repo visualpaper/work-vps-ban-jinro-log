@@ -1,6 +1,6 @@
 from enum import Enum
 
-from exceptions.exceptions import IllegalArgumentsException
+from src.exceptions.exceptions import IllegalArgumentsException
 
 
 class VillagePosition(Enum):

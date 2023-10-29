@@ -43,7 +43,7 @@ class VillageBans:
 @strawberry.type(name="Village")
 class Village:
     id: strawberry.ID
-    number: str
+    number: int
     endDate: str
     url: str
     name: str

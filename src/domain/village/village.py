@@ -20,6 +20,7 @@ class Village:
     # 村の最小人数 (るる鯖の仕様的に 30 人が最大となる)
     MAX_PEOPLE = 30
 
+    id: str
     village_number: int
     end_date: UtcDate
     name: str

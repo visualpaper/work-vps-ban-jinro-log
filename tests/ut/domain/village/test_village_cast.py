@@ -1,7 +1,7 @@
 import pytest
 
-from exceptions.exceptions import IllegalArgumentsException
 from src.domain.village.village_cast import VillageCast
+from src.exceptions.exceptions import IllegalArgumentsException
 
 
 class TestVillageCast:
