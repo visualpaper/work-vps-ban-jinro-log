@@ -54,9 +54,9 @@ class Village:
 
 @strawberry.input
 class VillagesInput:
-    trip: str
-    people_min: Optional[int]
-    people_max: Optional[int]
+    trip: Optional[str] = None
+    people_min: Optional[int] = None
+    people_max: Optional[int] = None
     cast: List[VillageCast]
     position: List[VillagePosition]
     skip: int = 0
