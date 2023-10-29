@@ -20,7 +20,7 @@ class VillageDao:
         conditions = []
 
         if condition.trip is not None:
-            conditions.append({"trip": condition.trip})
+            conditions.append({"bans": {"$elemMatch": {"trip": condition.trip}}})
 
         if condition.people_min is not None:
             conditions.append({"people": {"$gte": condition.people_min}})
@@ -36,11 +36,20 @@ class VillageDao:
         if len(condition.positions) != 0:
             conditions.append(
                 {
-                    "bans.position": {
-                        "$in": [position.value for position in condition.positions]
+                    "bans": {
+                        "$elemMatch": {
+                            "position": {
+                                "$in": [
+                                    position.value for position in condition.positions
+                                ]
+                            }
+                        }
                     }
                 }
             )
+
+        if len(conditions) == 0:
+            return {}
 
         return {"$and": conditions}
 

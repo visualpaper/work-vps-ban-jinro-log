@@ -10,7 +10,7 @@ class VillageBansDto(TypedDict):
 
 class VillageDto(TypedDict):
     _id: ObjectId
-    villageNumbers: List[int]
+    villageNumber: int
     endDate: int
     name: str
     people: int
