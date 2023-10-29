@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List
+from typing import List, Optional
 
 import strawberry
 
@@ -43,10 +43,21 @@ class VillageBans:
 @strawberry.type(name="Village")
 class Village:
     id: strawberry.ID
-    number: str
+    number: int
     endDate: str
     url: str
     name: str
     people: int
     cast: VillageCast
     bans: List[VillageBans]
+
+
+@strawberry.input
+class VillagesInput:
+    trip: Optional[str] = None
+    people_min: Optional[int] = None
+    people_max: Optional[int] = None
+    cast: List[VillageCast]
+    position: List[VillagePosition]
+    skip: int = 0
+    take: int = 5
