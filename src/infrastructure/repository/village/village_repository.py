@@ -30,6 +30,9 @@ class VillageRepositoryImpl(VillageRepository):
             ],
         )
 
+    def count(self, condition: VillageCondition) -> int:
+        return self._dao.count(condition)
+
     def select(self, condition: VillageCondition) -> List[Village]:
         dtos: List[VillageDto] = self._dao.select(condition)
 

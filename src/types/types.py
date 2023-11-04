@@ -61,3 +61,9 @@ class VillagesInput:
     position: List[VillagePosition]
     skip: int = 0
     take: int = 5
+
+
+@strawberry.type(name="VillageResult")
+class VillageResult:
+    totalItems: int
+    items: List[Village]
