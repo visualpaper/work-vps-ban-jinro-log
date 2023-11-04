@@ -3,6 +3,7 @@ import functools
 import strawberry
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from strawberry.schema.config import StrawberryConfig
 
 from .config.config import get_config
 from .config.logger import get_logger
@@ -22,7 +23,9 @@ logger = get_logger()
 # で、この strawberry が絶賛 Inject 対応中っぽいので、
 # 将来を期待し今は context_getter で各 facade を injection している。
 # (参照) https://github.com/strawberry-graphql/strawberry/issues/2413
-schema = strawberry.Schema(query=Query, mutation=Mutation)
+schema = strawberry.Schema(
+    query=Query, mutation=Mutation, config=StrawberryConfig(auto_camel_case=False)
+)
 graphql_app = MyGraphQLRouter(
     schema, graphiql=config.enable_graphiql, context_getter=get_context
 )

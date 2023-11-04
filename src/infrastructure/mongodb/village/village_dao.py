@@ -53,6 +53,11 @@ class VillageDao:
 
         return {"$and": conditions}
 
+    def count(self, condition: VillageCondition) -> int:
+        select_find = self._create_find(condition)
+
+        return self._collection.count_documents(select_find)
+
     def select(self, condition: VillageCondition) -> List[VillageDto]:
         select_find = self._create_find(condition)
 

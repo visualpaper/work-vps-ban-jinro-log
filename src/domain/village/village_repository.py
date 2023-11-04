@@ -7,5 +7,9 @@ from src.domain.village.village_condition import VillageCondition
 
 class VillageRepository(ABC):
     @abstractmethod
+    def count(self, condition: VillageCondition) -> int:
+        pass
+
+    @abstractmethod
     def select(self, condition: VillageCondition) -> List[Village]:
         pass
