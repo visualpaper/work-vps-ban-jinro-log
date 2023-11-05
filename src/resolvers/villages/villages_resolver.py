@@ -6,12 +6,18 @@ from src.application.village_facade import VillageFacade
 from src.domain.village.village_cast import VillageCast
 from src.domain.village.village_condition import VillageCondition
 from src.domain.village.village_position import VillagePosition
+from src.exceptions.exceptions import BadRequestException
 from src.resolvers.villages.scheme.villages_scheme import VillagesScheme
 from src.types.types import Village as VillageScheme
 from src.types.types import VillageResult, VillagesInput
 
 
 def list_villages(info: Info, input: VillagesInput) -> VillageResult:
+    sid: str = info.context["sid"]
+
+    if sid is None:
+        raise BadRequestException()
+
     facade: VillageFacade = info.context["village_facade"]
     scheme: VillagesScheme = info.context["villages_scheme"]
     condition: VillageCondition = VillageCondition(
