@@ -1,7 +1,7 @@
 # ban-jinro-log
 
-* python 3.8.1
-* poerty 1.2.2
+* python 3.9.13
+* poerty 1.6.1
 
 ## Setup
 
@@ -335,3 +335,50 @@ Collection
 - poetry run task test
 - poetry run task start  
   ※ http://localhost:8000/docs or http://localhost:8000/redoc で OAS 参照可能
+
+
+<br><br>
+
+## Deploy
+
+- poetry add gunicorn  
+  ※ ローカルでは uvicorn を利用して開発するが、本番では [こちら](https://www.uvicorn.org/#running-with-gunicorn) で推奨されているように gunicorn を利用する。   
+  ※ フルスタックな process manager で、worker 数も 1 より大きな値を設定可能となる (uvicorn は 1 まで)  
+  (参照) https://gunicorn.org/
+
+- ログを標準出力のみにする  
+  ※ app ログや dump ログに分離はできないので標準出力のみに logger.py を変更する。
+
+<br>
+
+### Deploy Render
+
+```
+1. Build Command に以下を入れる
+
+> pip install --upgrade pip && pip install poetry==1.6.1 && poetry install && pip install --force-reinstall -U setuptools
+
+2. Start Command に以下を入れる
+
+> gunicorn src.main:app -w 4 -k uvicorn.workers.UvicornWorker
+
+3. Enviromnent に以下を入れる
+
+PYTHON_VERSION: 3.9.13
+CORS_ALLOW_ORIGIN: xxx
+ENABLE_GRAPHIQL: False
+MONGODB_URL: xxx
+
+4. MongoDB へのアクセス権限を設定する
+   ※ Outbound にあるものを Network Access → Add IP Address で設定する。
+
+5. UI 側のデプロイを行う
+
+6. ドメイン申請を行う
+
+7. Render にドメイン設定を行う
+
+8. Enviromnent の以下を更新する
+
+CORS_ALLOW_ORIGIN: xxx
+```
