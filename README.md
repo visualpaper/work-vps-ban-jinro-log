@@ -1,7 +1,7 @@
 # ban-jinro-log
 
-* python 3.8.1
-* poerty 1.2.2
+* python 3.9.13
+* poerty 1.6.1
 
 ## Setup
 
@@ -335,3 +335,34 @@ Collection
 - poetry run task test
 - poetry run task start  
   ※ http://localhost:8000/docs or http://localhost:8000/redoc で OAS 参照可能
+
+
+<br><br>
+
+## Deploy
+
+- poetry add gunicorn  
+  ※ ローカルでは uvicorn を利用して開発するが、本番では [こちら](https://www.uvicorn.org/#running-with-gunicorn) で推奨されているように gunicorn を利用する。   
+  ※ フルスタックな process manager で、worker 数も 1 より大きな値を設定可能となる (uvicorn は 1 まで)  
+  (参照) https://gunicorn.org/
+
+<br>
+
+### Deploy Render
+
+- render.yaml  
+  ※ 以下に沿って render yaml を作成する。  
+  ※ Render で利用される Python バージョンは Web Service の環境変数で指定する必要がある。  
+  ※ デフォルトだと [3.7](https://render.com/docs/python-version) が利用される。  
+  ※ 一部 `pip install --upgrade pip` がないと Poetry Install で失敗したので入れている。  
+  (参照) https://render.com/docs/blueprint-spec
+
+- poetry.toml  
+  ※ Render では Poetry バージョンが 1.2 未満サポート都合、以下変更を加えている。  
+  (参照) https://python-poetry.org/docs/master/managing-dependencies/
+
+```
+[xxx.poetry.group.dev.dependencies]
+↓
+[xxx.poetry.dev-dependencies]
+```
