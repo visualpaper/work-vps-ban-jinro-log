@@ -21,7 +21,7 @@ class UserRepositoryImpl(UserRepository):
 
     def create(self) -> str:
         dto: UserDto = UserDto(
-            _id=ObjectId(), villageNumbers=[], createData=datetime.now()
+            _id=ObjectId(), villageNumbers=[], createDate=datetime.now()
         )
 
         self._dao.insert_one(dto)

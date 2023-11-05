@@ -7,4 +7,4 @@ from bson import ObjectId
 class UserDto(TypedDict):
     _id: ObjectId
     villageNumbers: List[int]
-    createData: date  # mognodb ttl delete 都合 date 型にしている。
+    createDate: date  # mognodb ttl delete 都合 date 型にしている。

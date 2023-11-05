@@ -23,3 +23,8 @@ class BanJinroLogException(GraphQLError):
 class IllegalArgumentsException(BanJinroLogException):
     def __init__(self, message: Optional[str] = None):
         super().__init__(LogCode.ILLEGAL_ARGUMENTS, message)
+
+
+class BadRequestException(BanJinroLogException):
+    def __init__(self, message: Optional[str] = None):
+        super().__init__(LogCode.BAD_REQUEST, message)
