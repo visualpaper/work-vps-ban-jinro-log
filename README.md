@@ -346,23 +346,40 @@ Collection
   ※ フルスタックな process manager で、worker 数も 1 より大きな値を設定可能となる (uvicorn は 1 まで)  
   (参照) https://gunicorn.org/
 
+- ログを標準出力のみにする  
+  ※ app ログや dump ログに分離はできないので標準出力のみに logger.py を変更する。
+
 <br>
 
 ### Deploy Render
 
-- render.yaml  
-  ※ 以下に沿って render yaml を作成する。  
-  ※ Render で利用される Python バージョンは Web Service の環境変数で指定する必要がある。  
-  ※ デフォルトだと [3.7](https://render.com/docs/python-version) が利用される。  
-  ※ 一部 `pip install --upgrade pip` がないと Poetry Install で失敗したので入れている。  
-  (参照) https://render.com/docs/blueprint-spec
-
-- poetry.toml  
-  ※ Render では Poetry バージョンが 1.2 未満サポート都合、以下変更を加えている。  
-  (参照) https://python-poetry.org/docs/master/managing-dependencies/
-
 ```
-[xxx.poetry.group.dev.dependencies]
-↓
-[xxx.poetry.dev-dependencies]
+1. Build Command に以下を入れる
+
+> pip install --upgrade pip && pip install poetry==1.6.1 && poetry install && pip install --force-reinstall -U setuptools
+
+2. Start Command に以下を入れる
+
+> gunicorn src.main:app -w 4 -k uvicorn.workers.UvicornWorker
+
+3. Enviromnent に以下を入れる
+
+PYTHON_VERSION: 3.9.13
+CORS_ALLOW_ORIGIN: xxx
+ENABLE_GRAPHIQL: False
+MONGODB_URL: xxx
+
+4. MongoDB へのアクセス権限を設定する
+   ※ Outbound にあるものを Network Access → Add IP Address で設定する。
+
+5. UI 側のデプロイを行う
+
+6. ドメイン申請を行う
+
+7. Render にドメイン設定を行う
+
+8. Enviromnent の以下を更新する
+
+CORS_ALLOW_ORIGIN: xxx
+
 ```
