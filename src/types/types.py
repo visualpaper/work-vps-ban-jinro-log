@@ -63,6 +63,13 @@ class VillagesInput:
     take: int = 5
 
 
+@strawberry.input
+class FeedbackInput:
+    name: str
+    address: str
+    content: str
+
+
 @strawberry.type(name="VillageResult")
 class VillageResult:
     totalItems: int
