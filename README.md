@@ -381,5 +381,4 @@ MONGODB_URL: xxx
 8. Enviromnent の以下を更新する
 
 CORS_ALLOW_ORIGIN: xxx
-
 ```
